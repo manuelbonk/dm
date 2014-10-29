@@ -36,10 +36,7 @@ def encode(l,r,toEncode):
         if i[0]==toEncode[0]:
             print("symbol: %s"%i)
             l_new=l+i_width*i[1]
-            r_new=l_new+i_width*i[2]
-            if i_width==1:
-                r_new=i[2]
-
+            r_new=l_new+i_width*(i[2]-i[1])
             print('         [dec]    [bin]\ni_width: {4:7f}\nl_new:   {0:7f} {1:33s}\nr_new:   {2:7f} {3:33s}\n'.format(l_new,binary(l_new),r_new,binary(r_new),i_width))
             encode(l_new,r_new,toEncode[1:])
 
