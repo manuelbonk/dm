@@ -1,6 +1,7 @@
 #!/bin/python3
 
 from collections import OrderedDict
+import ctypes
 
 code="EGHEGFGGEF"
 
@@ -37,10 +38,13 @@ def decode(l,r,toDecode):
             r_new=l_new+i_width*i[2]
             if i_width==1:
                 r_new=i[2]
-            print("l_new: %f    r_new: %f   i_width: %f\n" %(l_new,r_new,i_width))
+
+            print("l_new [dec]: %s  l_new[bin]: %s  r_new[dec]: %s  r_new[bin]: %s  i_width: %s\n" %(l_new,binary(l_new),r_new,binary(r_new),i_width))
             decode(l_new,r_new,toDecode[1:])
 #            decode(l+i_width*i[1],r+i_width*i[2],toDecode[1:])
 
+def binary(num):
+    return bin(ctypes.c_int.from_buffer(ctypes.c_float(num)).value)
 
 genInitInterval()
 decode(0,1,code)
