@@ -3,7 +3,8 @@
 import string
 from collections import OrderedDict
 
-code="ballaballa"
+code="bananenanbau"
+#code="ballaballa"
 
 def genASCIIdict():
     dictionary={}
@@ -19,22 +20,23 @@ def genASCIIdict():
     return OrderedDict(sorted(dictionary.items()))
 
 def encode(toEncode):
-    muster=""
+    puffer=""
     new_entries_counter=256
     while toEncode!="":
-        zeichen=toEncode[0]
-        toEncode=toEncode[1:]
-        print("PENISPENIS %s"%zeichen)
-        if muster+zeichen in dictionary:
-            print("muster+zeichen sind in dictionary")
-            muster=muster+zeichen
+        k=toEncode[0]
+        if puffer+k in dictionary:
+            print("%s + %s in Tabelle gefunden, puffer erweitern"%(puffer,k))
+            puffer+=k
         else:
-            dictionary.update({muster+zeichen:new_entries_counter})
+            print("%s + %s in Tabelle hinzufuegen"%(puffer,k))
+            dictionary.update({puffer+k:new_entries_counter})
+            print("output: <%s : %s>"%(new_entries_counter, puffer))
             new_entries_counter+=1
-            print(muster)
-            muster=zeichen
-        if muster!="":
-            print(muster)
+            puffer=k
+            print("neuer puffer: <%s>\n"%puffer)
+
+        toEncode=toEncode[1:]
+
 dictionary=genASCIIdict()
 encode(code)
 print(dictionary)
