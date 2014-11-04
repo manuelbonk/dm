@@ -3,9 +3,11 @@
 import string
 from collections import OrderedDict
 
-code="bananenanbau"
+code="0012230331130121"
+#code="bananenanbau"
 #code="ballaballa"
 
+dictionary={}
 def genASCIIdict():
     dictionary={}
     i=0
@@ -25,18 +27,23 @@ def encode(toEncode):
     while toEncode!="":
         k=toEncode[0]
         if puffer+k in dictionary:
-            print("%s + %s in Tabelle gefunden, puffer erweitern"%(puffer,k))
+            print("<%s+%s> in Tabelle gefunden, puffer erweitern"%(puffer,k))
             puffer+=k
         else:
-            print("%s + %s in Tabelle hinzufuegen"%(puffer,k))
+            print("<%s+%s> in Tabelle an Stelle <%s> hinzufuegen"%(puffer,k,new_entries_counter))
             dictionary.update({puffer+k:new_entries_counter})
-            print("output: <%s : %s>"%(new_entries_counter, puffer))
+            print("output: <%s:%s>"%(new_entries_counter, puffer))
             new_entries_counter+=1
             puffer=k
-            print("neuer puffer: <%s>\n"%puffer)
 
+        print("neuer puffer: <%s>\n"%puffer)
         toEncode=toEncode[1:]
 
-dictionary=genASCIIdict()
+def printDict(d):
+
+    for key,value in sorted(d.items(), key=lambda x:x[1]):
+        print("key: %5s value: %3s"%(key,value))
+
+#dictionary=genASCIIdict()
 encode(code)
-print(dictionary)
+printDict(dictionary)
