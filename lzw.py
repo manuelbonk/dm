@@ -3,11 +3,6 @@
 import string
 from collections import OrderedDict
 
-code="0012230331130121"
-#code="bananenanbau"
-#code="ballaballa"
-
-dictionary={}
 def genASCIIdict():
     dictionary={}
     i=0
@@ -21,29 +16,32 @@ def genASCIIdict():
         j+=1
     return OrderedDict(sorted(dictionary.items()))
 
-def encode(toEncode):
+def encode(toEncode,init_dictionary,new_entries_counter):
+    dictionary=init_dictionary
     puffer=""
-    new_entries_counter=256
+    nec=new_entries_counter
     while toEncode!="":
         k=toEncode[0]
-        if puffer+k in dictionary:
+        if str(puffer)+str(k) in dictionary:
             print("<%s+%s> in Tabelle gefunden, puffer erweitern"%(puffer,k))
-            puffer+=k
+            puffer+=str(k)
+            print("PUFFFFFFER %s"%puffer)
         else:
-            print("<%s+%s> in Tabelle an Stelle <%s> hinzufuegen"%(puffer,k,new_entries_counter))
-            dictionary.update({puffer+k:new_entries_counter})
-            print("output: <%s:%s>"%(new_entries_counter, puffer))
-            new_entries_counter+=1
+            print("<%s+%s> in Tabelle an Stelle <%s> hinzufuegen"%(puffer,k,nec))
+            dictionary.update({str(puffer)+str(k):nec})
+            print("output: <%s:%s>"%(nec, puffer))
+            nec+=1
             puffer=k
 
         print("neuer puffer: <%s>\n"%puffer)
         toEncode=toEncode[1:]
+    printDict(dictionary)
 
 def printDict(d):
 
     for key,value in sorted(d.items(), key=lambda x:x[1]):
         print("key: %5s value: %3s"%(key,value))
 
-#dictionary=genASCIIdict()
-encode(code)
-printDict(dictionary)
+#encode("bananenanbau",genASCIIdict(),256)
+#encode("ballaballa",genASCIIdict(),256)
+encode("0012230331130121",{},0)
