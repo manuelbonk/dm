@@ -29,7 +29,8 @@ def encode(toEncode,init_dictionary,new_entries_counter):
         else:
             print("<%s+%s> in Tabelle an Stelle <%s> hinzufuegen"%(puffer,k,nec))
             dictionary.update({str(puffer)+str(k):nec})
-            print("output: <%s:%s>"%(dictionary[puffer], puffer))
+            if puffer in dictionary:
+                print("output: <%s:%s>"%(dictionary[puffer], puffer))
             nec+=1
             puffer=k
 
@@ -42,6 +43,6 @@ def printDict(d):
     for key,value in sorted(d.items(), key=lambda x:x[1]):
         print("key: %5s value: %3s"%(key,value))
 
-encode("bananenanbau",genASCIIdict(),256)
+#encode("bananenanbau",genASCIIdict(),256)
 #encode("ballaballa",genASCIIdict(),256)
-#encode("0012230331130121",{},0)
+encode("0012230331130121",{},0)
