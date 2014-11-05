@@ -17,8 +17,10 @@ def genASCIIdict():
     return OrderedDict(sorted(dictionary.items()))
 
 def encode(toEncode,init_dictionary,new_entries_counter):
+    message=toEncode
     dictionary=init_dictionary
     puffer=""
+    encoded=[]
     nec=new_entries_counter
     while toEncode!="":
         k=toEncode[0]
@@ -29,20 +31,24 @@ def encode(toEncode,init_dictionary,new_entries_counter):
         else:
             print("<%s+%s> in Tabelle an Stelle <%s> hinzufuegen"%(puffer,k,nec))
             dictionary.update({str(puffer)+str(k):nec})
-            if puffer in dictionary:
-                print("output: <%s:%s>"%(dictionary[puffer], puffer))
+#           if puffer in dictionary:
+#               print("output: <%s:%s>"%(dictionary[puffer], puffer))
+#            encoded+=str(dictionary[puffer])+"-"
+            encoded.append(dictionary[puffer])
+            print("output: %s"%dictionary[puffer])
             nec+=1
             puffer=k
 
         print("neuer puffer: <%s>\n"%puffer)
         toEncode=toEncode[1:]
     printDict(dictionary)
+    print("\nmessage: <%s>\nLZW encoded message: <%s>\nbinary LZW encoded message: <%s>" %(message,encoded,[bin(x) for x in encoded]))
 
 def printDict(d):
 
     for key,value in sorted(d.items(), key=lambda x:x[1]):
         print("key: %5s value: %3s"%(key,value))
 
-#encode("bananenanbau",genASCIIdict(),256)
+encode("bananenanbau",genASCIIdict(),256)
 #encode("ballaballa",genASCIIdict(),256)
-encode("0012230331130121",{},0)
+#encode("0012230331130121",{},0)
