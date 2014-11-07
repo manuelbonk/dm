@@ -24,31 +24,31 @@ def encode(toEncode,init_dictionary,new_entries_counter):
     nec=new_entries_counter
     while toEncode!="":
         k=toEncode[0]
+        print("puffer: <%s>"%puffer)
+        print("k: <%s>"%k)
         if str(puffer)+str(k) in dictionary:
             print("<%s+%s> in Tabelle gefunden, puffer erweitern"%(puffer,k))
             puffer+=str(k)
-            print("PUFFFFFFER %s"%puffer)
         else:
             print("<%s+%s> in Tabelle an Stelle <%s> hinzufuegen"%(puffer,k,nec))
             dictionary.update({str(puffer)+str(k):nec})
-#           if puffer in dictionary:
-#               print("output: <%s:%s>"%(dictionary[puffer], puffer))
-#            encoded+=str(dictionary[puffer])+"-"
+#            print("dictionary: <%s>\n\npuffer: <%s>\n\n"%(dictionary,puffer))
             encoded.append(dictionary[puffer])
             print("output: %s"%dictionary[puffer])
             nec+=1
             puffer=k
 
-        print("neuer puffer: <%s>\n"%puffer)
+        print("neuer puffer: <%s>\n\n"%puffer)
         toEncode=toEncode[1:]
     printDict(dictionary)
-    print("\nmessage: <%s>\nLZW encoded message: <%s>\nbinary LZW encoded message: <%s>" %(message,encoded,[bin(x) for x in encoded]))
+    print("\nmessage: <%s>\nLZW encoded message: <%s>\nbinary LZW encoded message: <%4s>" %(message,encoded,['{0:04b}'.format(x) for x in encoded]))
 
 def printDict(d):
 
     for key,value in sorted(d.items(), key=lambda x:x[1]):
         print("key: %5s value: %3s"%(key,value))
 
-encode("bananenanbau",genASCIIdict(),256)
+# Anfangsalphabet darf nicht leer sein. (Keine Ahnung, ob das allgemein für LZW gilt oder nur für meinen Code)
+#encode("bananenanbau",genASCIIdict(),256)
 #encode("ballaballa",genASCIIdict(),256)
-#encode("0012230331130121",{},0)
+encode("0012230331130121",{'0':0,'1':1,'2':2,'3':3},4)
