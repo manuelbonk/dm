@@ -1,9 +1,9 @@
 #!/bin/python3
 
 import string
-from collections import OrderedDict
 
 def genASCIIdict():
+    # Ja, ich weiss, das ist keine vollstaendige ASCII-Tabelle, aber zumindest sind alle Buchstaben und Ziffern abgedeckt
     dictionary={}
     i=0
     for uc in string.ascii_uppercase:
@@ -14,7 +14,11 @@ def genASCIIdict():
     for lc in string.ascii_lowercase:
         dictionary.update({lc:97+j})
         j+=1
-    return OrderedDict(sorted(dictionary.items()))
+
+    for k in range(10):
+        dictionary.update({k:48+k})
+
+    return dictionary
 
 def encode(toEncode,init_dictionary,new_entries_counter):
     message=toEncode
@@ -41,7 +45,7 @@ def encode(toEncode,init_dictionary,new_entries_counter):
         print("neuer puffer: <%s>\n\n"%puffer)
         toEncode=toEncode[1:]
     printDict(dictionary)
-    print("\nmessage: <%s>\nLZW encoded message: <%s>\nbinary LZW encoded message: <%4s>" %(message,encoded,['{0:04b}'.format(x) for x in encoded]))
+    print("\nmessage: <%s>\nLZW encoded message: <%s>\nbinary LZW encoded message: <%4s>\n" %(message,encoded,['{0:04b}'.format(x) for x in encoded]))
 
 def printDict(d):
 
@@ -51,4 +55,5 @@ def printDict(d):
 # Anfangsalphabet darf nicht leer sein. (Keine Ahnung, ob das allgemein für LZW gilt oder nur für meinen Code)
 #encode("bananenanbau",genASCIIdict(),256)
 #encode("ballaballa",genASCIIdict(),256)
-encode("0012230331130121",{'0':0,'1':1,'2':2,'3':3},4)
+#encode("0012230331130121",{'0':0,'1':1,'2':2,'3':3},4)
+encode("bobobobowebewe",genASCIIdict(),256)
