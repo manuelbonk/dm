@@ -65,7 +65,7 @@ def convertToASCII(toConvert):
 
 # Anfangsalphabet darf nicht leer sein. (Keine Ahnung, ob das allgemein für LZW gilt oder nur für meinen Code)
 #encode("bananenanbau",genASCIIdict(),256)
-encode("ballaballa",genASCIIdict(),256)
+#encode("ballaballa",genASCIIdict(),256)
 
 # Aufgabe 1 a) und 1 c)
 #print("Aufgabe 1 a) und 1 c):\n")
@@ -79,3 +79,7 @@ encode("ballaballa",genASCIIdict(),256)
 #print("Aufgabe 2b):")
 #task_2b=convertToASCII("bobobobowebewe")
 #print("\nplain (binary) ASCII encoded message: <%s>\n(binary) LZW encoded message: <%s>\nreduction: <%s>"%(task_2b,task_2a,len(task_2a)*9/(len(task_2b)*8)))
+
+# Blatt 4, Aufgabe 2
+print("Blatt 4, Aufgabe 2:")
+encode("wawawawobawaw",genASCIIdict(),256)
