@@ -1,0 +1,2 @@
+HTML5 ist nicht mehr SGML-basiert und braucht daher keine Referenz zu einer D(ocument)T(ype)D(efinition).
+Mit der Definition des Zeichensatzes koennen Encodierungsfehler beim Client verhindert werden.
