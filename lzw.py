@@ -29,7 +29,8 @@ def encode(toEncode,init_dictionary,new_entries_counter):
     while toEncode!="":
         k=toEncode[0]
         print("puffer: <%s>"%puffer)
-        print("k: <%s>"%k)
+        print("lesen: <%s>"%k)
+#        print("k: <%s>"%k)
         if str(puffer)+str(k) in dictionary:
             print("<%s+%s> in Tabelle gefunden, puffer erweitern"%(puffer,k))
             puffer+=str(k)
@@ -50,8 +51,10 @@ def encode(toEncode,init_dictionary,new_entries_counter):
     # returns LZW encoded message in binary code
     return ['{0:8b}'.format(x) for x in encoded]
 
-def printDict(d):
+def decode(toDecode):
+    # TODO
 
+def printDict(d):
     print("dictionary:")
     for key,value in sorted(d.items(), key=lambda x:x[1]):
         print("key: %5s value: %3s"%(key,value))
