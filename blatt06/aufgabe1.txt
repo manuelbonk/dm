@@ -1,0 +1,8 @@
+1
+	a)	i) /lehre/material/klausur.pdf
+		ii) /lehre/dm/bilder/loesung1.png
+	b)	i) ./index_old.html
+		ii) ../../material/geheimnis.png
+		iii) ../dm/other_stuff/kaesekuchen.pdf
+		iv) ../../
+

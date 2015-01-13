@@ -1,0 +1,24 @@
+*{
+	outline: dashed 1px black;
+	width: 600px;
+	margin:none
+}
+
+#navigation {
+	height:50px;
+}
+
+#content {
+	height:300px;
+}
+
+#footer0 {
+	width:300px;
+	float:left;
+}
+
+#footer1 {
+	width:300px;
+	text-align:right;
+	float:right
+}

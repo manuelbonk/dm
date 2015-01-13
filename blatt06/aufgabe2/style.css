@@ -1,0 +1,16 @@
+/* Aufgabe 2a */
+div div{
+	color:#00f;
+}
+
+/* Aufgabe 2b */
+body{
+	font-family:Verdana;
+	font-size:0.8em;
+}
+
+/* Aufgabe 2c und 2d */
+
+#id1, .class1{
+	background-color:#f00;
+}
