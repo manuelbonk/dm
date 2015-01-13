@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+	    <link rel="stylesheet" type="text/css" href="style.css">
+		<title>Aufgabe 11 - JS lernen</title>
+    </head>
+
+	<body>
+	<form>
+		Eine Zahl:
+		<input type="inpuinput" value="" id="zahl"/>
+	</form>
+		<script type="text/javascript">
+			var input = document.getElementById("zahl");
+			document.getElementById("zahl").addEventListener('input',checkNumber);
+			function checkNumber(){
+				var input=document.getElementById("zahl").value
+				// Eingabe als float typecasten
+				var pInput=parseFloat(input);
+				// pruefen, ob Eingabe eine gueltige Zahl ist
+				if(isNaN(Number(input))){
+						alert(input+" is not even a number!");
+						rmvChar();
+						return;
+				}
+				// pruefen, ob Eingabe eine Ganzzahl ist
+				if (pInput-Math.floor(pInput)>0){
+						alert(input+" is not an integer!");
+						rmvChar();
+						return;
+				}
+			}
+			// letztes Element der Eingabe entfernen
+			function rmvChar(){
+				document.getElementById("zahl").value=document.getElementById("zahl").value.slice(0,-1);
+			}
+		</script>
+	</body>
+</html>

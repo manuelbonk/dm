@@ -45,14 +45,15 @@ def encode(toEncode,init_dictionary,new_entries_counter):
 
         print("neuer puffer: <%s>\n"%puffer)
         toEncode=toEncode[1:]
-    encoded.append(26)
-    printDict(dictionary)
+    encoded.append(dictionary[k])
+#    printDict(dictionary)
     print("\nmessage: <%s>\nLZW encoded message: <%s>\nbinary LZW encoded message: <%4s>\n" %(message,encoded,['{0:04b}'.format(x) for x in encoded]))
     # returns LZW encoded message in binary code
     return ['{0:8b}'.format(x) for x in encoded]
 
 def decode(toDecode):
     # TODO
+    print("tbd")
 
 def printDict(d):
     print("dictionary:")
